@@ -1,0 +1,16 @@
+<%
+	report_results = measure('sqlmap_results')
+	report_link = measure('sqlmap_results_link')
+
+	border_color = "red"
+
+	if report_link
+		if (report_results.data == "SQLMap cannot find injectable parameters.")
+			border_color = "green"
+		end
+%>
+
+	<h1>
+		<%= link_to format_measure(report_results), report_link.data, :style => "padding-left: 2px; border-bottom-style: none; border-left: 8px solid " + border_color + "; border-radius: 2px;", :target => "_blank", :rel => "nofollow", :popup => true %>
+	</h1>
+<% end %>
